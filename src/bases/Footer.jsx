@@ -27,7 +27,7 @@ function Footer ({activeMenu}) {
         <li id="credits">
           <p className="footer_element text_footer">@2022 <a className="footer_element" href="/"> LIERAGUZMAN.COM </a> </p>
           <p id="slash" className="footer_element text_footer"> | creada por </p>
-          <a target="_blank" className="footer_element" href="https://www.linkedin.com/in/omar-b-ram%C3%ADrez/"> Omar Ramírez</a>
+          <a target="_blank" className="footer_element" href="https://main--omarbramirez.netlify.app/"> Omar Ramírez</a>
         </li>
       </ul>
     </footer>
