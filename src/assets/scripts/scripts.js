@@ -35,7 +35,7 @@ const sliderActivation = e=>{
       if(a.dataset.position ==position) {
         a.classList.add("active");
         slide=a;
-      }
+      };
 
   });
   };
@@ -44,7 +44,7 @@ const sliderActivation = e=>{
         const selection = e.target.dataset.position;
         activation(dots, selection );
         activation(sliders, selection );
-        }
+        };
     };
 
 /*CONTROLLER*/
@@ -60,7 +60,7 @@ const sliderActivation = e=>{
       autoSize(slider,slide);
     } else return;
    });
- }
+ };
 
  /*DEPLOY RESPOSNIVE MOBILE MENU*/
  hamburger.addEventListener ("click", function(e) {
