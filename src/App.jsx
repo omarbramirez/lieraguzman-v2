@@ -26,9 +26,9 @@ setActiveMenu('');
   return (
     <>
     <Header setPage={setPage} setActiveMenu={setActiveMenu} activeMenu={activeMenu}/>
-    {page === 'index' ? <Index/>:
+    {page === 'index' ? <Index  setPage={setPage}/>:
     page == 'gallery' ? <Gallery/>:
-    page == 'bibliography' ? <Bibliography/>:
+    page == 'bibliography' ? <Bibliography  setPage={setPage}/>:
     page == 'ofidias' ? <Ofidias/>:
     page == 'efusiva-penitente' ? <Efusiva/>:
     page == 'aboutme' ? <AboutMe/>:

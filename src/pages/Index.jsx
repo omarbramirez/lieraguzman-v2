@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-function Index () {
+function Index ({setPage}) {
 
   const [slider, setSlider] = useState(1);
 
@@ -17,7 +17,7 @@ function Index () {
             Candidata al Premio RAE, 2020. <br/> <br/>
             ¡<b>E-book de Ofidias</b> disponible en más de 700 tiendas digitales del mundo!
           </p>
-          <a href="ofidias" target="_blank" className="button">Saber más</a>
+          <a onClick={()=>{setPage("ofidias")}} className="button">Saber más</a>
         </div>
         <div className="slide_img" data-img="1"></div>
       </li>
