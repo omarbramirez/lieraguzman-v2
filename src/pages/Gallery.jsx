@@ -23,6 +23,7 @@ function Gallery (){
 
     const viewImage = (img, i)=>{
         setData({img, i})
+        console.log(data)
     }
     const imgAction = (action) =>{
         let i =data.i

@@ -1,5 +1,5 @@
 .content-books {
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -122,9 +122,9 @@ align-self: flex-start;
 .poem,
 .text {
   width: 24rem;
-  padding-bottom: 100%;
   background-size: cover;
   margin: 15px;
+  cursor: pointer;
 }
 
 
