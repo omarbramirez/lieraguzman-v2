@@ -112,6 +112,7 @@ a {
   color: var(--primary);
   margin: 0;
   display: inline-block;
+  cursor: pointer;
 }
 
 b {

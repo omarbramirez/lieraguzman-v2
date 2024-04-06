@@ -45,7 +45,7 @@ return(
         alignItems: 'center',
         overflow: 'hidden'
     }}>
-        <a style={{position: 'absolute', top: '10px', right:'10px', fontSize: 'var(--text-display)', cursor: 'pointer'}} onClick={()=> imgAction('close')}>X</a>
+        <a style={{position: 'absolute', top: '10px', right:'10px', fontSize: 'var(--text-display)', cursor: 'pointer'}} onClick={()=> imgAction('close')}>ⓧ</a>
         <a style={{margin:'2%', fontSize: 'var(--text-display)', cursor: 'pointer'}} onClick={()=> imgAction('prev-img')}>◀</a>
         <img src={data.img} style={{width: 'auto', maxWidth: '80%', objectFit: 'contain', height: '90%'}} />
         <a style={{margin:'2%', fontSize: 'var(--text-display)', cursor: 'pointer'}} onClick={()=> imgAction('next-img')}>▶</a>
