@@ -26,7 +26,7 @@ function Ofidias (){
 
     const viewImg = (img, i, list)=>{
         setData({img, i, list})
-        console.log(data)
+
     }
 
 

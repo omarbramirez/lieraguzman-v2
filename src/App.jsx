@@ -26,13 +26,13 @@ setActiveMenu('');
   return (
     <>
     <Header setPage={setPage} setActiveMenu={setActiveMenu} activeMenu={activeMenu}/>
-    {page === 'index' ? <Index  setPage={setPage}/>:
-    page == 'gallery' ? <Gallery/>:
-    page == 'bibliography' ? <Bibliography  setPage={setPage}/>:
-    page == 'ofidias' ? <Ofidias/>:
-    page == 'efusiva-penitente' ? <Efusiva/>:
-    page == 'aboutme' ? <AboutMe/>:
-    page == 'background' ? <Background/>:
+    {page === 'index' && activeMenu !== 'active' ? <Index  setPage={setPage}/>:
+    page == 'gallery'  && activeMenu !== 'active' ? <Gallery/>:
+    page == 'bibliography' && activeMenu !== 'active' ? <Bibliography  setPage={setPage}/>:
+    page == 'ofidias' && activeMenu !== 'active' ? <Ofidias/>:
+    page == 'efusiva-penitente' && activeMenu !== 'active' ? <Efusiva/>:
+    page == 'aboutme' && activeMenu !== 'active' ? <AboutMe/>:
+    page == 'background' && activeMenu !== 'active' ? <Background/>:
     <NotFound/>
     }
     <Footer activeMenu={activeMenu}/>
