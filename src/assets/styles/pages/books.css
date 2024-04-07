@@ -147,6 +147,7 @@ align-self: flex-start;
 
 video {
   width: 60%;
+  margin: auto;
 }
 
 @media (max-width: 800px) {
