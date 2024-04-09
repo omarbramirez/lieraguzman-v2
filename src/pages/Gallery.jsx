@@ -14,16 +14,16 @@ import Img11 from '../assets/images/gallery/juancarlos_moralesmejia_013.jpg'
 import Img12 from '../assets/images/gallery/juancarlos_moralesmejia_014.jpg'
 import Img13 from '../assets/images/gallery/juancarlos_moralesmejia_015.jpg'
 import Img14 from '../assets/images/gallery/juancarlos_moralesmejia_016.jpg'
-import { useState } from "react"
+import { useState, useEffect  } from "react"
 
 function Gallery (){
     const images = [Img01, Img02, Img03, Img04, Img05, Img06, Img07, Img08, Img09,Img10,Img11,Img12,Img13,Img14];
 
     const[data, setData] = useState({img: '', i:0})
+    const [loading, setLoading] = useState(true);
 
     const viewImage = (img, i)=>{
         setData({img, i})
-        console.log(data)
     }
     const imgAction = (action) =>{
         let i =data.i
@@ -32,8 +32,37 @@ function Gallery (){
         setData({img: '', i: 0})           
     }
 
+    useEffect(() => {
+        const loadImage = (image) => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = image;
+                img.onload = () => resolve();
+                img.onerror = (err) => reject(err);
+            });
+        }
+
+        const loadImages = async () => {
+            try {
+                await Promise.all(images.map(image => loadImage(image)));
+                setLoading(false);
+            } catch (error) {
+                console.error('Error loading images:', error);
+            }
+        };
+
+        loadImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    
 return(
     <>
+    {loading && (
+                <div id="loader" className="loader-wrapper">
+                    <span className="loader"><span className="loader-inner"></span></span>
+                </div>
+            )}
+
     {data.img &&
     <div style={{
         width: '100%',
