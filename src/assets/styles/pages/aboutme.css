@@ -29,7 +29,6 @@
 }
 
 .p_3_col {
-  color: var(--variation-5);
   font-family: var(--font-1);
   width: 50%;
   margin: 1rem;
@@ -61,7 +60,7 @@
 }
 
 .p_2_col {
-  color: var(--variation-5);
+
   text-align: right;
 }
 
@@ -96,7 +95,7 @@
 .list-element {
   font-family: var(--font-1);
   /* font-size: var(--text-base); */
-  color: var(--variation-5);
+
   text-align: center !important;
 }
 
@@ -109,7 +108,7 @@
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  border: 2px solid var(--variation-5);
+  border: 2px solid var(--primary);
   display: block;
   margin: 0.5rem auto;
 }
