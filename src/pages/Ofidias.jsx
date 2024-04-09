@@ -63,7 +63,7 @@ return(
     <div className="content content-book">
       <div className="header header_book">
         <h2 className="book_title">Ofidias</h2>
-        <ul id="main_slider" className="slider" style={{height: '40vh'}}>
+        <ul id="main_slider" className="slider" >
           <li className={`slide ${slider === 1 ? 'active' : ''}`} data-position="1" style={{ alignItems: 'center' }}>
             <p>
             &quot;Agradezco a Valeria Guzmán por haber escrito este libro y, sobre todo, por compartirlo, pues publicar un libro es hacerlo público. Espero que encuentre en sus lectoras una identificación inmediata, un acto de justicia desde la literatura, y que en sus lectores encuentre la exploración de esa experiencia de mundo que ellos no conocen y que es parte de nuestra humanidad.&quot;

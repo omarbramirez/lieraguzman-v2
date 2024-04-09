@@ -53,7 +53,7 @@ return(
           <div className="content content-book">
             <div className="header header_book">
             <h2 className="book_title">Efusiva Penitente</h2>
-            <ul id="main_slider" className="slider" style={{height: '40vh'}}>
+            <ul id="main_slider" className="slider">
           <li className={`slide ${slider === 1 ? 'active' : ''}`} data-position="1" style={{ alignItems: 'center' }}>
             <p>
             &quot;Somos presas de las necesidades de la carne, de su delirio interno que cada vez necesita ser saciado; que canta, arrulla y también despierta abruptamente las fibras de la necesidad incontrolable. Así encuentro justificativo a Efusiva penitente (CCE Imbabura, 2010) de Valeria Guzmán (Rusia, 1988). Un poemario que explora lo erótico desde una particularidad sacrílega, siendo atentado a las costumbres, a la ritualidad caduca que impera en las sociedades cristianas.&quot;

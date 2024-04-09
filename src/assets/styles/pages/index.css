@@ -65,8 +65,8 @@ div[data-img="4"] {
 }
 
 #main_slider {
-  margin: 6rem auto;
-  height: 90vh;
+  margin: auto;
+  height: 80vh;
   overflow-x: hidden !important;
   overflow-y: hidden !important;
 }
