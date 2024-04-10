@@ -8,6 +8,7 @@ import Gallery from './pages/Gallery.jsx'
 import Index from './pages/Index.jsx'
 import Ofidias from './pages/Ofidias.jsx'
 import NotFound from './bases/NotFound.jsx';
+import Policy from './bases/Policy.jsx'
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -33,9 +34,10 @@ setActiveMenu('');
     page == 'efusiva-penitente' && activeMenu !== 'active' ? <Efusiva/>:
     page == 'aboutme' && activeMenu !== 'active' ? <AboutMe/>:
     page == 'background' && activeMenu !== 'active' ? <Background/>:
+    page == 'policy' && activeMenu  !== 'active' ? <Policy/>:
     <NotFound/>
     }
-    <Footer activeMenu={activeMenu}/>
+    <Footer activeMenu={activeMenu}  setPage={setPage}/>
     </>
   )
 }

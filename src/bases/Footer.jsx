@@ -1,6 +1,6 @@
 
 
-function Footer ({activeMenu}) {
+function Footer ({activeMenu,setPage}) {
 
   const toTheTop = ()=>{
     window.scrollTo(0, 0);
@@ -17,7 +17,7 @@ function Footer ({activeMenu}) {
             <li className="brands_icon"><a target="_blank" id="instagram" className="social_media" href="https://www.instagram.com/lieraguzmanvz/"></a></li>
           </ul>
         </li>
-        <li><a className="footer_element">Términos de Privacidad</a></li>
+        <li><a className="footer_element" onClick={()=>{setPage('policy')}}>Términos de Privacidad</a></li>
       </ul>
 
       <a id="logo_footer" className={`${activeMenu}`} onClick={toTheTop}>VALERIA GUZMÁN</a>
