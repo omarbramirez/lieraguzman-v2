@@ -1,4 +1,4 @@
-function Policy ({setPage}){
+function Policy (){
     return(
         <>
 <div className="content content-policy">
