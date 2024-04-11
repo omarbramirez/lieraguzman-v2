@@ -73,7 +73,8 @@ return(
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        zIndex: '9999999999999999999'
     }}>
         <a style={{position: 'absolute', top: '10px', right:'10px', fontSize: 'var(--text-display)', cursor: 'pointer'}} onClick={()=> imgAction('close')}>ⓧ</a>
         <a style={{margin:'2%', fontSize: 'var(--text-display)', cursor: 'pointer'}} onClick={()=> imgAction('prev-img')}>◀</a>
