@@ -56,8 +56,8 @@ const App: React.FC = () => {
       {/* 2. Se inyecta el estado y el mutador al Header */}
       <Header 
         setPage={navigate} 
-        isMenuOpen={isMenuOpen} 
-        setIsMenuOpen={setIsMenuOpen} 
+        // isMenuOpen={isMenuOpen} 
+        // setIsMenuOpen={setIsMenuOpen} 
       />
       
       {/* 3. Contenedor principal orquestador del desplazamiento */}
