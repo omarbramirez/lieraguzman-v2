@@ -50,7 +50,7 @@ const AboutMe: React.FC = () => {
           aria-label="Fotografía de Valeria Guzmán"
         />
         <div className="vanguard-item-txt-right">
-          <span className="bg-number" aria-hidden="true">01</span>
+
           <h1 className="title-massive">LA AUTORA</h1>
           <p className="text-xl">
             Poeta, traductora, docente y lexicógrafa, nacida en Rusia, de madre nicaragüense y
@@ -66,7 +66,7 @@ const AboutMe: React.FC = () => {
       {/* Sección 02 – Docencia */}
       <article className="vanguard-grid vanguard-grid--mt" aria-label="Filosofía docente">
         <div className="vanguard-item-txt-left">
-          <span className="bg-number" aria-hidden="true">02</span>
+ 
           <h2 className="title-massive title-massive--4xl">
             Yo he aprendido mucho, muchísimo impartiendo clase.
           </h2>

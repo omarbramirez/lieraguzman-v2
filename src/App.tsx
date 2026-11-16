@@ -1,3 +1,4 @@
+// App.tsx
 import React, { useState, useEffect } from "react";
 import Header from "./bases/Header";
 import Footer from "./bases/Footer";
@@ -23,13 +24,17 @@ type PageId =
 
 const App: React.FC = () => {
   const [page, setPage] = useState<PageId>("index");
+  
+  // 1. Elevación de estado: App controla la visibilidad del menú
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [page]);
 
-  const navigate = (target: string) => {
+  const navigate = (target: string): void => {
     setPage(target as PageId);
+    setIsMenuOpen(false); // Garantiza que el menú se cierre al navegar
   };
 
   const renderPage = (): React.ReactNode => {
@@ -47,11 +52,23 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
-      <Header setPage={navigate} />
-      {renderPage()}
-      <Footer setPage={navigate} />
-    </>
+    <div className="app-root">
+      {/* 2. Se inyecta el estado y el mutador al Header */}
+      <Header 
+        setPage={navigate} 
+        isMenuOpen={isMenuOpen} 
+        setIsMenuOpen={setIsMenuOpen} 
+      />
+      
+      {/* 3. Contenedor principal orquestador del desplazamiento */}
+      <main 
+        className={`layout-main ${isMenuOpen ? "layout-main--shifted" : ""}`}
+        aria-hidden={isMenuOpen} // A11y: Oculta el contenido al lector de pantalla si el menú está activo
+      >
+        {renderPage()}
+        <Footer setPage={navigate} />
+      </main>
+    </div>
   );
 };
 

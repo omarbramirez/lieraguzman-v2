@@ -4,7 +4,33 @@ export interface BibliographyProps {
   setPage: (page: string) => void;
 }
 
+interface BookEntry {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  targetPage: string;
+}
+
 const Bibliography: React.FC<BibliographyProps> = ({ setPage }) => {
+  const bibliographyBooks: BookEntry[] = [
+    {
+      id: "book_001",
+      title: "EFUSIVA PENITENTE",
+      description: "Libro de poemas publicado por la Casa de la Cultura Ecuatoriana.",
+      imageUrl: "/images/efusiva.jpg", // Asegúrate de tener la ruta correcta en public/images/
+      targetPage: "efusiva-penitente",
+    },
+    {
+      id: "book_002",
+      title: "OFIDIAS",
+      description:
+        '"Como una gota se carga lentamente hasta que ya no aguanta su propio peso y rueda, así, cada palabra de Valeria Guzmán ha caído en su libro Ofidias. La lucidez, en algunos momentos escalofriante, se ha aliado con la belleza y macerado en el tiempo." — Raquel Olvera',
+      imageUrl: "/images/ofidias.jpg",
+      targetPage: "ofidias",
+    },
+  ];
+
   return (
     <main className="container" role="main">
       <section className="page-intro" aria-label="La Obra – introducción">
@@ -13,56 +39,65 @@ const Bibliography: React.FC<BibliographyProps> = ({ setPage }) => {
       </section>
 
       <div className="books-list">
-        {/* Efusiva Penitente */}
-        <article className="vanguard-grid" aria-label="Efusiva Penitente">
-          <div
-            id="book_001"
-            className="img-placeholder img-placeholder--3-4 img-placeholder--bg vanguard-item-img-left"
-            role="img"
-            aria-label="Portada de Efusiva Penitente"
-          />
-          <div className="vanguard-item-txt-right">
-            <span className="bg-number" aria-hidden="true">01</span>
-            <h2 className="title-massive title-massive--5xl">EFUSIVA PENITENTE</h2>
-            <p className="body-muted body-muted--mb2">
-              Libro de poemas publicado por la Casa de la Cultura Ecuatoriana.
-            </p>
-            <button
-              className="button-link"
-              onClick={() => setPage("efusiva-penitente")}
-              aria-label="Saber más sobre Efusiva Penitente"
-            >
-              Saber más →
-            </button>
-          </div>
-        </article>
+        {bibliographyBooks.map((book, index) => {
+          const isLeft = index % 2 === 0;
 
-        {/* Ofidias */}
-        <article className="vanguard-grid" aria-label="Ofidias">
-          <div
-            id="book_002"
-            className="img-placeholder img-placeholder--3-4 img-placeholder--bg vanguard-item-img-right"
-            role="img"
-            aria-label="Portada de Ofidias"
-          />
-          <div className="vanguard-item-txt-left">
-            <span className="bg-number" aria-hidden="true">02</span>
-            <h2 className="title-massive title-massive--5xl">OFIDIAS</h2>
-            <p className="body-muted body-muted--mb2">
-              "Como una gota se carga lentamente hasta que ya no aguanta su propio
-              peso y rueda, así, cada palabra de Valeria Guzmán ha caído en su libro
-              Ofidias. La lucidez, en algunos momentos escalofriante, se ha aliado con
-              la belleza y macerado en el tiempo." — Raquel Olvera
-            </p>
-            <button
-              className="button-link"
-              onClick={() => setPage("ofidias")}
-              aria-label="Saber más sobre Ofidias"
+          // Elemento de imagen optimizado para Vite con etiqueta nativa
+          const imageElement = (
+            <div
+              key={`img-${book.id}`}
+              className={`img-container-wrapper ${
+                isLeft ? "vanguard-item-img-left" : "vanguard-item-img-right"
+              }`}
             >
-              Saber más →
-            </button>
-          </div>
-        </article>
+              <img
+                id={book.id}
+                src={book.imageUrl}
+                alt={`Portada de ${book.title}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className="vanguard-img-native"
+              />
+            </div>
+          );
+
+          // Elemento de contenido textual
+          const textElement = (
+            <div
+              key={`txt-${book.id}`}
+              className={
+                isLeft ? "vanguard-item-txt-right" : "vanguard-item-txt-left"
+              }
+            >
+              <h2 className="title-massive title-massive--5xl">{book.title}</h2>
+              <p className="body-muted body-muted--mb2">{book.description}</p>
+              <button
+                className="button-link"
+                onClick={() => setPage(book.targetPage)}
+                aria-label={`Saber más sobre ${book.title}`}
+              >
+                Saber más →
+              </button>
+            </div>
+          );
+
+          return (
+            <article key={book.id} className="vanguard-grid" aria-label={book.title}>
+              {/* Si es par, imagen izquierda / texto derecha. Si es impar, texto izquierda / imagen derecha en el DOM */}
+              {isLeft ? (
+                <>
+                  {imageElement}
+                  {textElement}
+                </>
+              ) : (
+                <>
+                  {textElement}
+                  {imageElement}
+                </>
+              )}
+            </article>
+          );
+        })}
       </div>
     </main>
   );

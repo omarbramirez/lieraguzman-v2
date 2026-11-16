@@ -135,3 +135,176 @@ li:hover #submenu_options{
   color: var(--complementary);
 }
 }
+
+
+/* =========================================
+   1. HEADER PRINCIPAL (BARRA SUPERIOR)
+   ========================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--variation-1, #ffffff);
+  z-index: 10;
+  border-bottom: 1px solid var(--primary, #eaeaea);
+}
+
+.site-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-header__logo {
+  background: none;
+  border: none;
+  font-family: var(--font-2, sans-serif);
+  font-size: var(--text-title, 1.2rem);
+  letter-spacing: 0.15rem;
+  color: var(--variation-4, #333);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.site-header__hamburger {
+  background: none;
+  border: none;
+  color: #a81c2f;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   2. OVERLAY (FONDO OSCURO DE INTERCEPCIÓN)
+   ========================================= */
+.site-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 40;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.site-overlay--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================================
+   3. PANEL LATERAL (OFF-CANVAS)
+   ========================================= */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85vw;
+  max-width: 400px;
+  height: 100vh;
+  background-color: #a81c2f;
+  color: #ffffff;
+  z-index: 50; /* Se renderiza por encima de toda la app y del overlay */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+  
+  /* El panel inicia oculto desplazado el 100% de su propio ancho hacia la derecha */
+  transform: translateX(100%); 
+  /* La transición usa una curva bezier para un movimiento natural (easing out) */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.side-panel--open {
+  transform: translateX(0); /* Regresa a su posición de anclaje original (right: 0) */
+}
+
+.side-panel__close-btn {
+  align-self: flex-end;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 3rem;
+  transition: background 0.2s;
+}
+
+.side-panel__close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   4. ENLACES INTERNOS DEL PANEL
+   ========================================= */
+.side-panel__links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.button-link {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.button-link:hover {
+  text-decoration: underline;
+}
+
+.button-link--child {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.side-panel__submenu-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-panel__submenu-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submenu-arrow {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.submenu-items {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  gap: 1rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
