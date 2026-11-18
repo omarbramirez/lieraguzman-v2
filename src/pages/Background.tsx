@@ -33,11 +33,17 @@ const Background: React.FC = () => {
             curadora del <b>Salón de Poesía</b> de la <b>FILQUITO 2020 y 2021</b>.
           </p>
         </div>
-        <div
-          className="img-placeholder img-placeholder--3-4 vanguard-item-img-right"
-          role="img"
-          aria-label="Fotografía de perfil"
-        />
+        
+        {/* Contenedor adaptado para imagen nativa en la sección de trayectoria */}
+        <div className="img-container-wrapper vanguard-item-img-right">
+          <img
+            src="/images/img_005.jpg"
+            alt="Fotografía de perfil de trayectoria"
+            loading="lazy"
+            decoding="async"
+            className="vanguard-img-native"
+          />
+        </div>
       </article>
 
       {/* Curriculum en columnas */}

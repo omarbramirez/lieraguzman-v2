@@ -702,3 +702,25 @@ ul { list-style: none; }
 @media (min-width: 768px) {
   .site-header { margin-bottom: 4rem; }
 }
+
+/* ============================================================
+   INVERSIÓN DE COLORES DEL FOOTER (Clases Existentes)
+   ============================================================ */
+.site-footer {
+  background-color: var(--c-primary) !important;
+  color: var(--c-var-3) !important;
+  border-top: none !important;
+}
+
+.site-footer .button-link,
+.site-footer .site-footer__copyright,
+.site-footer .site-footer__credit-link {
+  color: var(--c-var-3) !important;
+  border-color: var(--c-var-3) !important;
+}
+
+.site-footer .button-link:hover,
+.site-footer .site-footer__credit-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}

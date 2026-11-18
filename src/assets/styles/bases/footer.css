@@ -5,9 +5,9 @@ footer {
   padding: 0 2rem;
   padding-bottom: 0.5rem;
 }
-#footer{
+#footer {
   color: var(--variation-3);
-  background: var(--complementary);
+  background: var(--complementary); /* Fondo rojo complementario */
 }
 
 #footer.active{
@@ -16,8 +16,9 @@ footer {
   bottom: 0;
 }
 
-#main_footer{
-  color: var(--variation-4);
+#main_footer {
+  color: var(--variation-3); /* Cambiado de variation-4 a variation-3 para texto claro */
+  background: var(--complementary); /* Añadido el fondo rojo */
 }
 #main_footer.active{
   position: absolute;

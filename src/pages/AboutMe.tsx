@@ -41,16 +41,19 @@ const topics: string[] = [
 const AboutMe: React.FC = () => {
   return (
     <main className="container" role="main">
-      {/* Sección 01 – Bio */}
+      {/* Sección 01 – Bio (Imagen izquierda, texto derecha) */}
       <article className="vanguard-grid" aria-label="Perfil biográfico">
-        <div
-          id="profile_img"
-          className="img-placeholder img-placeholder--1-1 img-placeholder--bg vanguard-item-img-left"
-          role="img"
-          aria-label="Fotografía de Valeria Guzmán"
-        />
+        <div className="img-container-wrapper vanguard-item-img-left">
+          <img
+            id="profile_img"
+            src="/images/img_profile.jpg"
+            alt="Fotografía de Valeria Guzmán"
+            loading="eager"
+            decoding="async"
+            className="vanguard-img-native"
+          />
+        </div>
         <div className="vanguard-item-txt-right">
-
           <h1 className="title-massive">LA AUTORA</h1>
           <p className="text-xl">
             Poeta, traductora, docente y lexicógrafa, nacida en Rusia, de madre nicaragüense y
@@ -63,10 +66,9 @@ const AboutMe: React.FC = () => {
         </div>
       </article>
 
-      {/* Sección 02 – Docencia */}
+      {/* Sección 02 – Docencia (Texto izquierda, pila de imágenes derecha) */}
       <article className="vanguard-grid vanguard-grid--mt" aria-label="Filosofía docente">
         <div className="vanguard-item-txt-left">
- 
           <h2 className="title-massive title-massive--4xl">
             Yo he aprendido mucho, muchísimo impartiendo clase.
           </h2>
@@ -81,19 +83,28 @@ const AboutMe: React.FC = () => {
             la respuesta cuando los alumnos están a punto de encontrarla".
           </p>
         </div>
+
         <div className="vanguard-item-img-right img-stack">
-          <div
-            id="img_002"
-            className="img-placeholder img-placeholder--16-9 img-placeholder--bg"
-            role="img"
-            aria-label="Fotografía en docencia 1"
-          />
-          <div
-            id="img_003"
-            className="img-placeholder img-placeholder--16-9 img-placeholder--bg img-placeholder--bg-top"
-            role="img"
-            aria-label="Fotografía en docencia 2"
-          />
+          <div className="img-container-wrapper">
+            <img
+              id="img_002"
+              src="/images/img_002.jpg"
+              alt="Fotografía en docencia 1"
+              loading="lazy"
+              decoding="async"
+              className="vanguard-img-native"
+            />
+          </div>
+          <div className="img-container-wrapper img-placeholder--bg-top">
+            <img
+              id="img_003"
+              src="/images/img_003.jpg"
+              alt="Fotografía en docencia 2"
+              loading="lazy"
+              decoding="async"
+              className="vanguard-img-native"
+            />
+          </div>
         </div>
       </article>
 
