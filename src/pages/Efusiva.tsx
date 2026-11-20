@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Poem01 from "../assets/images/texts/efusiva001.jpg";
 import Poem02 from "../assets/images/texts/efusiva002.jpg";
 import Poem03 from "../assets/images/texts/efusiva003.jpg";
@@ -10,63 +11,112 @@ interface ViewerData {
   i: number;
 }
 
+const poems: string[] = [Poem01, Poem02, Poem03, Poem04, Poem05];
+
 const Efusiva: React.FC = () => {
-  const poems: string[] = [Poem01, Poem02, Poem03, Poem04, Poem05];
   const [viewer, setViewer] = useState<ViewerData | null>(null);
 
-  const openViewer = (img: string, i: number) => setViewer({ img, i });
-
-  const navigate = (direction: "prev" | "next") => {
-    if (!viewer) return;
-    const nextIdx = direction === "next" ? viewer.i + 1 : viewer.i - 1;
-    if (poems[nextIdx] !== undefined) {
-      setViewer({ img: poems[nextIdx], i: nextIdx });
-    } else {
-      setViewer(null);
-    }
+  const openViewer = (img: string, i: number): void => {
+    setViewer({ img, i });
   };
 
-  return (
-    <main className="container" role="main">
+  const closeViewer = useCallback((): void => {
+    setViewer(null);
+  }, []);
 
-      {/* Lightbox */}
-      {viewer && (
+  const navigate = useCallback((direction: "prev" | "next"): void => {
+    setViewer((prev) => {
+      if (!prev) return null;
+      const nextIdx = direction === "next" ? prev.i + 1 : prev.i - 1;
+      if (poems[nextIdx] !== undefined) {
+        return { img: poems[nextIdx], i: nextIdx };
+      }
+      return null;
+    });
+  }, []);
+
+  // Bloqueo de scroll y navegación por teclado mientras el visor está activo
+  useEffect(() => {
+    if (!viewer) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e: KeyboardEvent): void => {
+      if (e.key === "Escape") closeViewer();
+      if (e.key === "ArrowRight") navigate("next");
+      if (e.key === "ArrowLeft") navigate("prev");
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [viewer, closeViewer, navigate]);
+
+  const lightboxNode = viewer
+    ? createPortal(
         <div
           className="lightbox"
           role="dialog"
           aria-modal="true"
           aria-label="Visor de poema"
+          onClick={closeViewer}
         >
           <button
+            type="button"
             className="lightbox__close button-link button-link--borderless"
-            onClick={() => setViewer(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              closeViewer();
+            }}
             aria-label="Cerrar visor"
           >
             ✕
           </button>
+
           <button
+            type="button"
             className="lightbox__prev button-link button-link--borderless"
-            onClick={() => navigate("prev")}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("prev");
+            }}
             aria-label="Poema anterior"
             disabled={viewer.i === 0}
           >
             ←
           </button>
+
           <img
             className="lightbox__img"
             src={viewer.img}
             alt={`Poema ${viewer.i + 1} de Efusiva Penitente`}
+            onClick={(e) => e.stopPropagation()}
           />
+
           <button
+            type="button"
             className="lightbox__next button-link button-link--borderless"
-            onClick={() => navigate("next")}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("next");
+            }}
             aria-label="Poema siguiente"
             disabled={viewer.i === poems.length - 1}
           >
             →
           </button>
-        </div>
-      )}
+        </div>,
+        document.body
+      )
+    : null;
+
+  return (
+    <main className="container" role="main">
+      {lightboxNode}
 
       <section className="page-intro" aria-label="Efusiva Penitente – introducción">
         <h1 className="title-massive page-intro__title">Efusiva Penitente</h1>
@@ -74,12 +124,17 @@ const Efusiva: React.FC = () => {
 
       {/* Sobre el libro */}
       <article className="vanguard-grid" aria-label="Sobre el libro">
-        <div
-          id="book_001"
-          className="img-placeholder img-placeholder--3-4 img-placeholder--bg vanguard-item-img-left"
-          role="img"
-          aria-label="Portada de Efusiva Penitente"
-        />
+        <div className="img-container-wrapper vanguard-item-img-left">
+          <img
+            id="book_001"
+            src="/images/efusiva.jpg"
+            alt="Portada de Efusiva Penitente"
+            loading="eager"
+            decoding="async"
+            className="vanguard-img-native"
+          />
+        </div>
+
         <div className="vanguard-item-txt-right">
           <span className="bg-number" aria-hidden="true">01</span>
           <h2 className="title-massive title-massive--4xl">Sobre el libro</h2>
@@ -160,13 +215,17 @@ const Efusiva: React.FC = () => {
                 onClick={() => openViewer(poem, i)}
                 tabIndex={0}
                 role="button"
-                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") openViewer(poem, i); }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openViewer(poem, i);
+                  }
+                }}
               />
             </li>
           ))}
         </ul>
       </section>
-
     </main>
   );
 };

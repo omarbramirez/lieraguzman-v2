@@ -724,3 +724,224 @@ ul { list-style: none; }
   opacity: 0.8;
   text-decoration: underline;
 }
+
+/* ============================================================
+   OFF-CANVAS REVEAL & FRAME EFFECT
+   ============================================================ */
+
+/* Contenedor raíz con el color sólido del menú lateral */
+.app-root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--c-primary); /* #7d231b de tu paleta */
+  overflow-x: hidden;
+}
+
+/* Panel lateral fijo en el fondo derecho */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: clamp(260px, 32vw, 380px);
+  height: 100vh;
+  background-color: var(--c-primary);
+  color: var(--c-var-3);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+}
+
+.side-panel__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.35rem;
+}
+
+.side-panel__link {
+  color: var(--c-var-3);
+  font-family: var(--font-body);
+  text-align: left;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.side-panel__link--primary {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.side-panel__link--sub {
+  font-size: var(--text-base);
+  font-weight: 400;
+  opacity: 0.85;
+  padding-left: 0.75rem;
+}
+
+.side-panel__link:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Lienzo principal de la aplicación */
+.layout-main {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  transform-origin: left center;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Estado activo: se encoge (deja aire arriba y abajo) y se desplaza a la izquierda */
+.layout-main--shifted {
+  transform: translateX(calc(-1 * clamp(260px, 32vw, 380px))) scale(0.84);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* En pantallas móviles el desplazamiento cubre más ancho */
+@media (max-width: 767px) {
+  .side-panel {
+    width: 72vw;
+  }
+
+  .layout-main--shifted {
+    transform: translateX(-72vw) scale(0.86);
+  }
+}
+
+/* Escudo de clic para cerrar el menú al tocar el lienzo encogido */
+.layout-main__click-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  cursor: pointer;
+}
+
+/* Botón circular "X" montado sobre el borde derecho de la tarjeta encogida */
+.layout-main__close-badge {
+  position: absolute;
+  top: 50%;
+  right: -22px;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #4a0e17;
+  color: var(--c-var-3);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.layout-main__close-badge:hover {
+  transform: translateY(-50%) scale(1.08);
+  background-color: #2e070d;
+}
+
+/* ============================================================
+   HEADER & BOTÓN HAMBURGUESA SIEMPRE VISIBLE
+   ============================================================ */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.site-header__hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  padding: 0.35rem;
+  border-radius: 4px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.site-header__hamburger:hover {
+  opacity: 0.75;
+}
+
+/* En móvil ocultamos los enlaces horizontales y dejamos solo el hamburguesa */
+@media (max-width: 767px) {
+  .site-nav {
+    display: none;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  background-color: rgba(18, 18, 18, 0.94);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  padding: 2rem;
+}
+
+.lightbox__close,
+.lightbox__prev,
+.lightbox__next {
+  position: fixed;
+  z-index: 1000000;
+  font-family: var(--font-title);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--c-var-3);
+  background-color: rgba(18, 18, 18, 0.65);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+}
+
+.lightbox__close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.lightbox__prev {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__next {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__prev:disabled,
+.lightbox__next:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.lightbox__img {
+  max-width: 85vw;
+  max-height: 85dvh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
