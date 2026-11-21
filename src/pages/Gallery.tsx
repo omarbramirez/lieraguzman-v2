@@ -176,7 +176,7 @@ const Gallery: React.FC = () => {
       {lightboxNode}
 
       <section className="page-intro" aria-label="Galería – introducción">
-        <h1 className="title-massive page-intro__title">Galería</h1>
+        <h1 className="title-massive page-intro__title title-wrap">Galería</h1>
         <p className="text-xl text-muted">Registro visual y eventos de Valeria Guzmán.</p>
       </section>
 

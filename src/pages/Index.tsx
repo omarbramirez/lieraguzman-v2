@@ -63,7 +63,7 @@ const Index: React.FC<IndexProps> = ({ setPage }) => {
   return (
     <main className="container" role="main">
       <section className="hero" aria-label="Introducción">
-        <h1 className="title-massive hero__title">
+        <h1 className="title-massive hero__title title-wrap">
           Valeria
           <br />
           Guzmán
@@ -73,84 +73,83 @@ const Index: React.FC<IndexProps> = ({ setPage }) => {
         </p>
       </section>
 
-<div className="books-list">
-  {books.map((book, index) => {
-    const isLeft = index % 2 === 0;
+      <div className="books-list">
+        {books.map((book, index) => {
+          const isLeft = index % 2 === 0;
 
-    // Elemento de imagen abstraído para reutilizarlo limpiamente
-    const imageElement = (
-      <div
-        key={`img-${book.id}`}
-        className={`img-container-wrapper ${
-          isLeft ? "vanguard-item-img-left" : "vanguard-item-img-right"
-        }`}
-      >
-        <img
-          src={book.imageUrl}
-          alt={`Portada del libro ${book.title}`}
-          loading={index === 0 ? "eager" : "lazy"}
-          decoding="async"
-          className="vanguard-img-native"
-        />
+          const imageElement = (
+            <div
+              key={`img-${book.id}`}
+              className={`img-container-wrapper img-container-wrapper--framed ${
+                isLeft ? "vanguard-item-img-left" : "vanguard-item-img-right"
+              }`}
+            >
+              <img
+                src={book.imageUrl}
+                alt={`Portada del libro ${book.title}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className="vanguard-img-native"
+              />
+            </div>
+          );
+
+          const textElement = (
+            <div
+              key={`txt-${book.id}`}
+              className={
+                isLeft ? "vanguard-item-txt-right" : "vanguard-item-txt-left"
+              }
+            >
+              <h2 className="title-massive title-massive--5xl title-wrap">
+                {book.title}
+              </h2>
+
+              {book.subtitle && (
+                <h3 className="text-xl title-wrap">{book.subtitle}</h3>
+              )}
+
+              <p className="body-muted body-muted--mb2">{book.description}</p>
+
+              {book.isExternal ? (
+                <a
+                  href={book.linkUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-link"
+                  aria-label={`Saber más sobre ${book.title} (abre en nueva pestaña)`}
+                >
+                  Saber más →
+                </a>
+              ) : (
+                <button
+                  className="button-link"
+                  onClick={book.linkAction}
+                  aria-label={`Saber más sobre ${book.title}`}
+                >
+                  Saber más →
+                </button>
+              )}
+            </div>
+          );
+
+          return (
+            <article key={book.id} className="vanguard-grid" aria-label={book.title}>
+              {isLeft ? (
+                <>
+                  {imageElement}
+                  {textElement}
+                </>
+              ) : (
+                <>
+                  {textElement}
+                  {imageElement}
+                </>
+              )}
+            </article>
+          );
+        })}
       </div>
-    );
-
-    // Elemento de texto abstraído
-    const textElement = (
-      <div
-        key={`txt-${book.id}`}
-        className={
-          isLeft ? "vanguard-item-txt-right" : "vanguard-item-txt-left"
-        }
-      >
-        <h2 className="title-massive title-massive--5xl">{book.title}</h2>
-
-        {book.subtitle && (
-          <h3 className="text-xl">{book.subtitle}</h3>
-        )}
-
-        <p className="body-muted body-muted--mb2">{book.description}</p>
-
-        {book.isExternal ? (
-          <a
-            href={book.linkUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="button-link"
-            aria-label={`Saber más sobre ${book.title} (abre en nueva pestaña)`}
-          >
-            Saber más →
-          </a>
-        ) : (
-          <button
-            className="button-link"
-            onClick={book.linkAction}
-            aria-label={`Saber más sobre ${book.title}`}
-          >
-            Saber más →
-          </button>
-        )}
-      </div>
-    );
-
-    return (
-      <article key={book.id} className="vanguard-grid" aria-label={book.title}>
-        {/* Si es par (isLeft), la imagen va primero. Si es impar, el texto va primero en el DOM */}
-        {isLeft ? (
-          <>
-            {imageElement}
-            {textElement}
-          </>
-        ) : (
-          <>
-            {textElement}
-            {imageElement}
-          </>
-        )}
-      </article>
-    );
-  })}
-</div>
     </main>
   );
 };

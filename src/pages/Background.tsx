@@ -4,7 +4,7 @@ const Background: React.FC = () => {
   return (
     <main className="container" role="main">
       <section className="page-intro" aria-label="Trayectoria – introducción">
-        <h1 className="title-massive page-intro__title">Trayectoria</h1>
+        <h1 className="title-massive page-intro__title title-wrap">Trayectoria</h1>
         <p className="text-xl text-muted">
           Perfil académico, reconocimientos y experiencia profesional.
         </p>
@@ -13,8 +13,7 @@ const Background: React.FC = () => {
       {/* Perfil narrativo */}
       <article className="vanguard-grid" aria-label="Perfil profesional">
         <div className="vanguard-item-txt-left">
-          <span className="bg-number" aria-hidden="true">01</span>
-          <h2 className="title-massive title-massive--4xl">Perfil</h2>
+          <h2 className="title-massive title-massive--4xl title-wrap">Perfil</h2>
           <p className="body-muted">
             Poeta, traductora, docente y lexicógrafa. Directora del proyecto{" "}
             <b>Mujeres al oído</b>, audios de escritoras ecuatorianas contemporáneas.
@@ -35,7 +34,7 @@ const Background: React.FC = () => {
         </div>
         
         {/* Contenedor adaptado para imagen nativa en la sección de trayectoria */}
-        <div className="img-container-wrapper vanguard-item-img-right">
+        <div className="img-container-wrapper img-container-wrapper--framed vanguard-item-img-right">
           <img
             src="/images/img_005.jpg"
             alt="Fotografía de perfil de trayectoria"
@@ -50,7 +49,7 @@ const Background: React.FC = () => {
       <div className="cv-grid">
         {/* Formación */}
         <section aria-label="Formación académica">
-          <h3 className="cv-section__title">FORMACIÓN</h3>
+          <h3 className="cv-section__title title-wrap">FORMACIÓN</h3>
           <ul className="cv-list">
             <li className="cv-list__item">
               Licenciada en Lingüística y Literatura Hispánica por la Benemérita
@@ -69,7 +68,7 @@ const Background: React.FC = () => {
 
         {/* Publicaciones */}
         <section aria-label="Publicaciones">
-          <h3 className="cv-section__title">PUBLICACIONES</h3>
+          <h3 className="cv-section__title title-wrap">PUBLICACIONES</h3>
           <ul className="cv-list">
             <li className="cv-list__item">
               <b>2010:</b> "Efusiva penitente", libro de poemas publicado por la Casa de
@@ -89,7 +88,7 @@ const Background: React.FC = () => {
 
         {/* Reconocimientos */}
         <section aria-label="Reconocimientos obtenidos">
-          <h3 className="cv-section__title">RECONOCIMIENTOS</h3>
+          <h3 className="cv-section__title title-wrap">RECONOCIMIENTOS</h3>
           <ul className="cv-list">
             <li className="cv-list__item">
               <b>2009:</b> Ganadora del X Premio Filosofía y Letras (BUAP) con
@@ -107,7 +106,7 @@ const Background: React.FC = () => {
 
         {/* Idiomas */}
         <section aria-label="Idiomas">
-          <h3 className="cv-section__title">IDIOMAS</h3>
+          <h3 className="cv-section__title title-wrap">IDIOMAS</h3>
           <ul className="tag-list" aria-label="Lista de idiomas">
             {["Latín", "Inglés", "Francés", "Ruso"].map((lang) => (
               <li key={lang} className="tag">{lang}</li>

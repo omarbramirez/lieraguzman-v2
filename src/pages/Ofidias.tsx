@@ -133,12 +133,12 @@ const Ofidias: React.FC = () => {
       {lightboxNode}
 
       <section className="page-intro" aria-label="Ofidias – introducción">
-        <h1 className="title-massive page-intro__title">Ofidias</h1>
+        <h1 className="title-massive page-intro__title title-wrap">Ofidias</h1>
       </section>
 
       {/* Sobre el libro */}
       <article className="vanguard-grid" aria-label="Sobre el libro Ofidias">
-        <div className="img-container-wrapper vanguard-item-img-left">
+        <div className="img-container-wrapper img-container-wrapper--framed vanguard-item-img-left">
           <img
             id="book_002"
             src="/images/ofidias.jpg"
@@ -151,7 +151,7 @@ const Ofidias: React.FC = () => {
 
         <div className="vanguard-item-txt-right">
           <span className="bg-number" aria-hidden="true">01</span>
-          <h2 className="title-massive title-massive--4xl">Sobre el libro</h2>
+          <h2 className="title-massive title-massive--4xl title-wrap">Sobre el libro</h2>
           <blockquote className="review-text body-muted--mb2">
             "Pocos libros son reptiles. Todo libro de poemas, necesariamente, nace de un
             huevo del tamaño de un puño, medida de la angustia, pero no todos tienen la
@@ -176,7 +176,7 @@ const Ofidias: React.FC = () => {
 
       {/* Selección de Poemas */}
       <section aria-label="Selección de poemas">
-        <h2 className="title-massive section-heading">SELECCIÓN DE POEMAS</h2>
+        <h2 className="title-massive section-heading title-wrap">SELECCIÓN DE POEMAS</h2>
         <ul className="poems-grid" role="list">
           {poems.map((poem, i) => (
             <li key={poem} className="poems-grid__item">
@@ -201,7 +201,7 @@ const Ofidias: React.FC = () => {
 
       {/* Tríptico de Gatas */}
       <section aria-label="Tríptico de Gatas – Traducciones">
-        <h2 className="title-massive section-heading">TRÍPTICO DE GATAS (TRADUCCIONES)</h2>
+        <h2 className="title-massive section-heading title-wrap">TRÍPTICO DE GATAS (TRADUCCIONES)</h2>
         <ul className="poems-grid" role="list">
           {poems002.map((poem, i) => (
             <li key={poem} className="poems-grid__item">
@@ -226,7 +226,7 @@ const Ofidias: React.FC = () => {
 
       {/* Ilustraciones */}
       <section aria-label="Ilustraciones">
-        <h2 className="title-massive section-heading">ILUSTRACIONES</h2>
+        <h2 className="title-massive section-heading title-wrap">ILUSTRACIONES</h2>
         <ul className="illus-grid" role="list">
           {illustrations.map((illus, i) => (
             <li key={illus} className="illus-grid__item">

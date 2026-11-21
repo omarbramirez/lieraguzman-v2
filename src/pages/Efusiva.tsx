@@ -119,12 +119,12 @@ const Efusiva: React.FC = () => {
       {lightboxNode}
 
       <section className="page-intro" aria-label="Efusiva Penitente – introducción">
-        <h1 className="title-massive page-intro__title">Efusiva Penitente</h1>
+        <h1 className="title-massive page-intro__title title-wrap">Efusiva Penitente</h1>
       </section>
 
       {/* Sobre el libro */}
       <article className="vanguard-grid" aria-label="Sobre el libro">
-        <div className="img-container-wrapper vanguard-item-img-left">
+        <div className="img-container-wrapper img-container-wrapper--framed vanguard-item-img-left">
           <img
             id="book_001"
             src="/images/efusiva.jpg"
@@ -137,7 +137,7 @@ const Efusiva: React.FC = () => {
 
         <div className="vanguard-item-txt-right">
           <span className="bg-number" aria-hidden="true">01</span>
-          <h2 className="title-massive title-massive--4xl">Sobre el libro</h2>
+          <h2 className="title-massive title-massive--4xl title-wrap">Sobre el libro</h2>
           <p className="body-muted">
             Fuera de la común mojigatería del campo erótico, la poeta halla un camino para
             tratar con su cuerpo en el diálogo con la poesía mística, ya sea guiada por
@@ -166,7 +166,7 @@ const Efusiva: React.FC = () => {
       <article className="vanguard-grid vanguard-grid--mt" aria-label="Reseñas">
         <div className="vanguard-item-txt-left">
           <span className="bg-number" aria-hidden="true">02</span>
-          <h2 className="title-massive title-massive--4xl">Reseñas</h2>
+          <h2 className="title-massive title-massive--4xl title-wrap">Reseñas</h2>
 
           <blockquote className="review-text">
             "Somos presas de las necesidades de la carne, de su delirio interno que cada vez
@@ -204,7 +204,7 @@ const Efusiva: React.FC = () => {
 
       {/* Poemas */}
       <section aria-label="Ilustración – Traducciones">
-        <h2 className="title-massive section-heading">ILUSTRACIÓN (TRADUCCIONES)</h2>
+        <h2 className="title-massive section-heading title-wrap">ILUSTRACIÓN (TRADUCCIONES)</h2>
         <ul className="poems-grid" role="list">
           {poems.map((poem, i) => (
             <li key={poem} className="poems-grid__item">

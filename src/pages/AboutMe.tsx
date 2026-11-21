@@ -43,7 +43,7 @@ const AboutMe: React.FC = () => {
     <main className="container" role="main">
       {/* Sección 01 – Bio (Imagen izquierda, texto derecha) */}
       <article className="vanguard-grid" aria-label="Perfil biográfico">
-        <div className="img-container-wrapper vanguard-item-img-left">
+        <div className="img-container-wrapper img-container-wrapper--framed vanguard-item-img-left">
           <img
             id="profile_img"
             src="/images/img_profile.jpg"
@@ -54,7 +54,7 @@ const AboutMe: React.FC = () => {
           />
         </div>
         <div className="vanguard-item-txt-right">
-          <h1 className="title-massive">LA AUTORA</h1>
+          <h1 className="title-massive title-wrap">LA AUTORA</h1>
           <p className="text-xl">
             Poeta, traductora, docente y lexicógrafa, nacida en Rusia, de madre nicaragüense y
             padre ecuatoriano; es residente mexicana. Dirige el proyecto Mujeres al oído, audios
@@ -69,7 +69,7 @@ const AboutMe: React.FC = () => {
       {/* Sección 02 – Docencia (Texto izquierda, pila de imágenes derecha) */}
       <article className="vanguard-grid vanguard-grid--mt" aria-label="Filosofía docente">
         <div className="vanguard-item-txt-left">
-          <h2 className="title-massive title-massive--4xl">
+          <h2 className="title-massive title-massive--4xl title-wrap">
             Yo he aprendido mucho, muchísimo impartiendo clase.
           </h2>
           <p className="body-muted">
@@ -85,7 +85,7 @@ const AboutMe: React.FC = () => {
         </div>
 
         <div className="vanguard-item-img-right img-stack">
-          <div className="img-container-wrapper">
+          <div className="img-container-wrapper img-container-wrapper--framed">
             <img
               id="img_002"
               src="/images/img_002.jpg"
@@ -95,7 +95,7 @@ const AboutMe: React.FC = () => {
               className="vanguard-img-native"
             />
           </div>
-          <div className="img-container-wrapper img-placeholder--bg-top">
+          <div className="img-container-wrapper img-container-wrapper--framed img-placeholder--bg-top">
             <img
               id="img_003"
               src="/images/img_003.jpg"
@@ -110,7 +110,7 @@ const AboutMe: React.FC = () => {
 
       {/* Temas de interés */}
       <section aria-label="Temas de interés profesional">
-        <h2 className="title-massive section-heading">TEMAS DE INTERÉS</h2>
+        <h2 className="title-massive section-heading title-wrap">TEMAS DE INTERÉS</h2>
         <ul className="topics-grid">
           {topics.map((topic) => (
             <li key={topic} className="topics-grid__item text-base">
@@ -122,7 +122,7 @@ const AboutMe: React.FC = () => {
 
       {/* Colaboraciones */}
       <section aria-label="Colaboraciones">
-        <h2 className="title-massive section-heading">COLABORACIONES</h2>
+        <h2 className="title-massive section-heading title-wrap">COLABORACIONES</h2>
         <ul className="collabs-grid">
           {collabs.map((c) => (
             <li key={c.id} className="collab-card">

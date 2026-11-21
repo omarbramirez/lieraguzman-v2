@@ -34,7 +34,7 @@ const Bibliography: React.FC<BibliographyProps> = ({ setPage }) => {
   return (
     <main className="container" role="main">
       <section className="page-intro" aria-label="La Obra – introducción">
-        <h1 className="title-massive page-intro__title">La Obra</h1>
+        <h1 className="title-massive page-intro__title title-wrap">La Obra</h1>
         <p className="text-xl text-muted">Colección de libros y poemarios publicados.</p>
       </section>
 
@@ -46,7 +46,7 @@ const Bibliography: React.FC<BibliographyProps> = ({ setPage }) => {
           const imageElement = (
             <div
               key={`img-${book.id}`}
-              className={`img-container-wrapper ${
+              className={`img-container-wrapper img-container-wrapper--framed ${
                 isLeft ? "vanguard-item-img-left" : "vanguard-item-img-right"
               }`}
             >
@@ -69,7 +69,7 @@ const Bibliography: React.FC<BibliographyProps> = ({ setPage }) => {
                 isLeft ? "vanguard-item-txt-right" : "vanguard-item-txt-left"
               }
             >
-              <h2 className="title-massive title-massive--5xl">{book.title}</h2>
+              <h2 className="title-massive title-massive--5xl title-wrap">{book.title}</h2>
               <p className="body-muted body-muted--mb2">{book.description}</p>
               <button
                 className="button-link"

@@ -4,7 +4,7 @@ const Policy: React.FC = () => {
   return (
     <main className="container" role="main" aria-label="Aviso de privacidad">
       <section className="page-intro" aria-label="Privacidad – introducción">
-        <h1 className="title-massive page-intro__title">Privacidad</h1>
+        <h1 className="title-massive page-intro__title title-wrap">Privacidad</h1>
         <p className="text-xl text-muted">
           Términos de privacidad y protección de datos.
         </p>
@@ -23,7 +23,7 @@ const Policy: React.FC = () => {
             lineamientos:
           </p>
 
-          <h2 className="title-massive text-3xl">
+          <h2 className="title-massive text-3xl title-wrap">
             ¿Para qué fines utilizaremos tus datos personales?
           </h2>
           <p className="body-muted">
@@ -36,7 +36,7 @@ const Policy: React.FC = () => {
             </li>
           </ul>
 
-          <h2 className="title-massive text-3xl">
+          <h2 className="title-massive text-3xl title-wrap">
             ¿Qué datos personales utilizaremos para estos fines?
           </h2>
           <p className="body-muted body-muted--mb2">
@@ -45,7 +45,7 @@ const Policy: React.FC = () => {
             identificación y contacto.
           </p>
 
-          <h2 className="title-massive text-3xl">Derechos ARCO</h2>
+          <h2 className="title-massive text-3xl title-wrap">Derechos ARCO</h2>
           <p className="body-muted">
             Tú tienes derecho a conocer qué datos personales tenemos de ti, para qué
             los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo,
@@ -69,7 +69,7 @@ const Policy: React.FC = () => {
             una identificación oficial y el Asunto «Derechos ARCO».
           </p>
 
-          <h2 className="title-massive text-3xl">Tecnologías de rastreo</h2>
+          <h2 className="title-massive text-3xl title-wrap">Tecnologías de rastreo</h2>
           <p className="body-muted body-muted--mb2">
             Te informamos que en nuestra página de internet utilizamos cookies, web
             beacons u otras tecnologías, a través de las cuales es posible monitorear
